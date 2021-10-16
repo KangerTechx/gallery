@@ -32,8 +32,8 @@ class UserFixtures extends Fixture
 
         for($i = 1; $i <= 5; $i++) {
             $user = new User();
-            $user->setFirstname($faker->numberBetween(0, $nbrFirst -1))
-                ->setLastname($faker->numberBetween(0, $nbrLast -1))
+            $user->setFirstname($this->firstName[$faker->numberBetween(0, $nbrFirst -1)])
+                ->setLastname($this->lastName[$faker->numberBetween(0, $nbrLast -1)])
                 ->setEmail($slug->slugify(($user->getFirstname()).'.'. $slug->slugify($user->getLastname())).'@gmail.com')
                 ->setPseudo($slug->slugify(substr($user->getFirstname(),0,3)) .'.'. $slug->slugify(substr($user->getLastname(),0,3)))
                 ->setImage($i.'.jpg')

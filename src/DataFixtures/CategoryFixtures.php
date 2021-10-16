@@ -18,7 +18,7 @@ class CategoryFixtures extends Fixture
         foreach($this->categories as $category) {
             $cat = new Category();
             $cat->setName($category);
-            $manager->persit($cat);
+            $manager->persist($cat);
         }
         $manager->flush();
     }
