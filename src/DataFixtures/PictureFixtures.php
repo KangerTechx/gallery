@@ -40,7 +40,8 @@ class PictureFixtures extends Fixture implements DependentFixtureInterface
                 ->setImage($i.'.jpg')
                 ->setSmalldescript($faker->paragraph(1, true))
                 ->setFulldescript($faker->paragraph(4, true))
-                ->setSlug($slugify->slugify($picture->getTitle()));
+                ->setSlug($slugify->slugify($picture->getTitle()))
+                ->setIsPulished($faker->boolean(90));
             $manager->persist($picture);
 
         }

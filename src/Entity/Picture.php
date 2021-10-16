@@ -76,6 +76,11 @@ class Picture
      */
     private $slug;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isPulished;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -232,6 +237,18 @@ class Picture
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getIsPulished(): ?bool
+    {
+        return $this->isPulished;
+    }
+
+    public function setIsPulished(bool $isPulished): self
+    {
+        $this->isPulished = $isPulished;
 
         return $this;
     }

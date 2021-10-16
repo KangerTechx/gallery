@@ -38,7 +38,8 @@ class UserFixtures extends Fixture
                 ->setPseudo($slug->slugify(substr($user->getFirstname(),0,3)) .'.'. $slug->slugify(substr($user->getLastname(),0,3)))
                 ->setImage(($i+1).'.jpg')
                 ->setPassword($this->hasher->hashPassword($user,'password'))
-                ->setRoles($this->level[$i]);
+                ->setRoles($this->level[$i])
+                ->setIsDisabled(false);
             $manager->persist($user);
         }
 
