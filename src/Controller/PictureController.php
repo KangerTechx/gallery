@@ -20,7 +20,7 @@ class PictureController extends AbstractController
 
         $artist = $artistRepository->findAll();
 
-        return $this->render('admin/index.html.twig', [
+        return $this->render('picture/index.html.twig', [
             'pictures' => $pictures,
             'categories' => $category,
             'artists' => $artist
