@@ -1,5 +1,56 @@
-{% extends 'admin.html.twig' %}
+{% extends 'base.admin.html.twig' %}
 
 {% block body %}
+<div class="container">
+    <h2>Pictures</h2>
 
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Image</th>
+                <th scope="col">Title</th>
+                <th scope="col">
+                    <ul class="nav">
+                        <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Category</a>
+                            <ul class="dropdown-menu">
+                                {% for cat in categories %}
+                                    <li class="dropdown-item">{{ cat.name }}</li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    </ul>
+                </th>
+                <th scope="col">Size</th>
+                <th scope="col">Artist</th>
+                <th scope="col">Date</th>
+                <th scope="col">Published</th>
+                <th scope="col"><i class="bi bi-pencil"></i></th>
+                <th scope="col"><i class="bi bi-trash"></i></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for pic in pictures %}
+            <tr>
+                <th scope="row"><img src="{{ asset('img/pictures/' ~ pic.image) }}" class="img-table" alt="{{ pic.title }}"></th>
+                <td>{{ pic.title }}</td>
+                <td>{{ pic.category.name }}</td>
+                <td>{{ pic.width ~ ' x ' ~ pic.height }}</td>
+                <td>{{ pic.artist.firstname ~ ' ' ~ pic.artist.lastname }}</td>
+                <td>{{ pic.createdAt|date('d-m-Y') }}</td>
+                <td>
+                    {% if pic.isPulished == true %}
+                        <input type="checkbox" value="{{ pic.isPulished }}" checked disabled>
+                    {% else %}
+                        <input type="checkbox" value="{{ pic.isPulished }}" disabled>
+                    {% endif %}
+                </td>
+                <th scope="col"><a href="#"><i class="bi bi-pencil"></i></a></th>
+                <th scope="col"><a href="#"><i class="bi bi-trash"></i></a></th>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}
