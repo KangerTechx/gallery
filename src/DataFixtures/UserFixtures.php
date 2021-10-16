@@ -30,15 +30,15 @@ class UserFixtures extends Fixture
         $nbrLast = count($this->lastName);
         $nbrLevel = count($this->level);
 
-        for($i = 1; $i <= 5; $i++) {
+        for($i = 0; $i <= 5; $i++) {
             $user = new User();
-            $user->setFirstname($this->firstName[$faker->numberBetween(0, $nbrFirst -1)])
-                ->setLastname($this->lastName[$faker->numberBetween(0, $nbrLast -1)])
-                ->setEmail($slug->slugify(($user->getFirstname()).'.'. $slug->slugify($user->getLastname())).'@gmail.com')
+            $user->setFirstname($this->firstName[$i])
+                ->setLastname($this->lastName[$i])
+                ->setEmail($slug->slugify(($user->getFirstname())).'.'. $slug->slugify($user->getLastname()).'@gmail.com')
                 ->setPseudo($slug->slugify(substr($user->getFirstname(),0,3)) .'.'. $slug->slugify(substr($user->getLastname(),0,3)))
-                ->setImage($i.'.jpg')
+                ->setImage(($i+1).'.jpg')
                 ->setPassword($this->hasher->hashPassword($user,'password'))
-                ->setRoles($this->level[$faker->numberBetween(0, $nbrLevel -1)]);
+                ->setRoles($this->level[$i]);
             $manager->persist($user);
         }
 
