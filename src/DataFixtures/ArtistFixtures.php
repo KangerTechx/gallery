@@ -25,6 +25,7 @@ class ArtistFixtures extends Fixture
                 ->setBiblio($faker->sentence);
             $gender = $gender == 'male' ? 'm' : 'f';
             $artist->setImage($i . $gender . '.jpg');
+            $artist->setIsDisabled(false);
 
             $manager->persist($artist);
         }

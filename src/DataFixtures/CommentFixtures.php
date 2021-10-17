@@ -29,7 +29,8 @@ class CommentFixtures extends Fixture implements DependentFixtureInterface
                 ->setCreatedAt(new \DateTimeImmutable())
                 ->setStar($faker->numberBetween(0, 5))
                 ->setDescript($faker->paragraph(2, true))
-                ->setTitle($faker->sentence(2, true));
+                ->setTitle($faker->sentence(2, true))
+                ->setIsPublished(true);
             $manager->persist($comment);
         }
         $manager->flush();

@@ -33,7 +33,9 @@ class PictureController extends AbstractController
 
         $pictures = $pictureRepository->findAll();
 
-        $artist = $artistRepository->findAll();
+        $artist = $artistRepository->findBy([
+            'isDisabled' => false
+        ]);
 
         return $this->render('picture/index.html.twig', [
             'pictures' => $pictures,
@@ -129,7 +131,6 @@ class PictureController extends AbstractController
                 }
                 $picture->setImage($newFileName);
             }
-            $picture->setCreatedAt(new \DateTimeImmutable());
             $picture->setSlug($slugify->slugify($picture->getTitle()));
             $manager->persist($picture);
             $manager->flush();

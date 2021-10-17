@@ -38,7 +38,7 @@ class PictureEditType extends AbstractType
                 'required' => true
             ])
             ->add('isPulished', ChoiceType::class, [
-                'label' => 'Publish picture:',
+                'label' => 'Published picture:',
                 'choices' => ['yes' => 1, 'no' => 0],
                 'required' => true
             ])

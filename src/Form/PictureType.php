@@ -6,6 +6,7 @@ use App\Entity\Picture;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -31,6 +32,11 @@ class PictureType extends AbstractType
                 'label' => 'Picture height:',
                 'required' => true
             ])
+            ->add('createdAt', DateTimeType::class, [
+                'label' => 'Created Date :',
+                'input' => 'datetime_immutable',
+                'required' => true
+            ])
             ->add('image', FileType::class, [
                 'label' => 'Choice your picture',
                 'mapped' =>false,
@@ -45,10 +51,10 @@ class PictureType extends AbstractType
                 'required' => true
             ])
             ->add('isPulished', ChoiceType::class, [
-                'label' => 'Publish picture:',
+                'label' => 'Published picture:',
                 'choices' => ['yes' => 1, 'no' => 0],
                 'required' => true
-    ])
+            ])
             ->add('artist', EntityType::class, [
                 'label' => 'Select an Artist:',
                 'placeholder' => 'Select ...',
