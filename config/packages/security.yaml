@@ -21,6 +21,12 @@ security:
         main:
             lazy: true
             provider: app_user_provider
+            form_login:
+                login_path: login
+                check_path: login
+            logout:
+                path: logout
+                target: home
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
@@ -31,5 +37,18 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+         - { path: ^/admin, roles: ROLE_ADMIN }
+         - { path: ^/editPicture, roles: ROLE_ADMIN }
+         - { path: ^/delPicture, roles: ROLE_ADMIN }
+         - { path: ^/addPicture, roles: ROLE_ADMIN }
+         - { path: ^/category, roles: ROLE_ADMIN }
+         - { path: ^/addCategory, roles: ROLE_ADMIN }
+         - { path: ^/editCategory, roles: ROLE_ADMIN }
+         - { path: ^/artist, roles: ROLE_ADMIN }
+         - { path: ^/addArtist, roles: ROLE_ADMIN }
+         - { path: ^/editArtist, roles: ROLE_ADMIN }
+         - { path: ^/comment, roles: ROLE_ADMIN }
+         - { path: ^/delComment, roles: ROLE_ADMIN }
+         - { path: ^/user, roles: ROLE_ADMIN }
+         - { path: ^/editUserAdmin, roles: ROLE_ADMIN }
+         - { path: ^/profile, roles: ROLE_USER }

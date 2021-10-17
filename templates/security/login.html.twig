@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section>
+
+        <div class="form container col-12 col-lg-5 mt-5">
+            <div class="row">
+            <h2 class=" my-4 titleCustom">Log In</h2>
+        </div>
+            <div class="form-container">
+            <form action="{{ path('login') }}" method="post" class="col-12 col-md-10">
+                <div class="form-group formCustom mb-3">
+                    <input type="text" class="form-control" required name="_username">
+                    <label for="email" class="label">
+                        <span class="labelContent">E-mail</span>
+                    </label>
+                </div>
+                <div class="form-group formCustom mb-3">
+                    <div class="eyes">
+                        <i class="bi bi-eye-fill" id="seeText" onclick="seeMdp()"></i>
+                        <i class="bi bi-eye-slash-fill lost" id="seePass" onclick="seeMdp()"></i>
+                    </div>
+                    <input type="password" class="form-control" required name="_password">
+                    <label for="password" class="label">
+                        <span class="labelContent">Password</span>
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-outline-primary">Connexion</button>
+            </form>
+            <p class="mt-2">Pas encore de compte ? <a href="{{ path('registration') }}" class="text-primary"> S'enregistrer</a></p>
+        </div>
+        </div>
+    </section>
+{% endblock %}

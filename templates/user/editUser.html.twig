@@ -1,0 +1,16 @@
+{% extends 'base.admin.html.twig' %}
+
+{% block body %}
+    <main class="container">
+        <div class="row">
+            <div class="col-md-10 offset-2">
+                <h2 class="display-4 my-4">Edit User</h2>
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <input type="submit" value="Edit User" class="btn btn-outline-primary">
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </main>
+
+{% endblock %}

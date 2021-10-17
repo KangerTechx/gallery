@@ -6,3 +6,14 @@
     width: 60px;
     height: auto;
 }
+
+.logout {
+    color: #970202;
+    text-decoration: none;
+    margin-right: 25px;
+}
+
+.logout:hover {
+    background-color: #970202;
+    color: #fff;
+}

@@ -1,0 +1,127 @@
+/* -- VIDEO CUSTOM -- */
+
+.video {
+    min-width: 100vw;
+    height: auto;
+    position: fixed;
+    top: 0;
+    z-index: -1;
+    opacity: 20%;
+}
+
+/* -- CUSTOM LOGIN FORM -- */
+
+.form {
+    background-color: rgba(187, 244, 253, 0.3);
+    padding: 50px !important;
+}
+
+.formCustom {
+    width: 75%;
+    height: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.formCustom input {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    padding-top: 15px;
+    border: none;
+    outline: none;
+    font-size: 0.8rem;
+}
+
+.formCustom label {
+    position: absolute;
+    bottom : 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    border-bottom: 1px solid #353535 ;
+}
+
+.formCustom label::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    height: 100%;
+    width: 100%;
+    border-bottom: 2px solid #529AFD;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+
+.labelContent {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    transition: all 0.3s ease;
+}
+
+.formCustom input:focus {
+    background-color: rgba(187, 244, 253, 0);
+}
+
+/*ANIMATION INPUT + LABEL */
+.formCustom input:focus + .label .labelContent,
+.formCustom input:valid + .label .labelContent {
+    transform: translateY(-100%);
+    font-size: 0.9em;
+    color: #529AFD;
+}
+
+.formCustom input:focus + .label::after,
+.formCustom input:valid + .label::after {
+    transform: translateX(0%);
+}
+
+
+
+
+
+
+/* CHROME AUTOCOMPLETION FIX */
+
+.formCustom input:-webkit-autofill,
+.formCustom input:-webkit-autofill:hover,
+.formCustom input:-webkit-autofill:focus,
+.formCustom input:-webkit-autofill:active  {
+    transition: background-color 5000s;
+    -webkit-text-fill-color: #fff !important;
+}
+
+
+.form-container p a {
+    text-decoration: none;
+}
+
+.form-container p a:hover {
+    color: #720101;
+}
+
+#adduser {
+    margin-bottom: 50px;
+}
+
+#adduser label {
+    margin-top: 20px;
+}
+
+
+
+.eyes {
+    position: absolute;
+    right: 0;
+    width: 10%;
+    display: flex;
+    justify-content: flex-end;
+    transform: translateY(100%);
+}
+.eyes i {
+    color: #000 !important;
+}

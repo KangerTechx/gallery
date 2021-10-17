@@ -28,7 +28,7 @@ class ArtistEditType extends AbstractType
                 'required' => true
             ])
             ->add('isDisabled', ChoiceType::class, [
-                'label' => 'Ban Artist:',
+                'label' => 'Banish Artist:',
                 'choices' => ['yes' => 1, 'no' => 0],
                 'required' => true
             ])

@@ -1,7 +1,41 @@
 {% extends 'base.admin.html.twig' %}
 
-{% block title %}Admin - Category{% endblock %}
-
 {% block body %}
-    <h1>Page Comment</h1>
+    <div class="container">
+        <h2 class="mt-5">Comments</h2>
+
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">Picture</th>
+                <th scope="col">Title</th>
+                <th scope="col">Created At</th>
+                <th scope="col">Stars</th>
+                <th scope="col">Comment</th>
+                <th scope="col">Published</th>
+                <th scope="col"><i class="bi bi-trash"></i></th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for comment in comments %}
+                <tr>
+                    <th scope="row"><img src="{{ asset('img/pictures/' ~ comment.picture.image) }}" class="img-table" alt="{{ comment.picture.title }}"></th>
+                    <td>{{ comment.title }}</td>
+                    <td>{{ comment.createdAt|date('d-m-Y') }}</td>
+                    <td>{{ comment.star }}</td>
+                    <td>{{ comment.descript }}</td>
+                    <td>
+                        {% if comment.isPublished == true %}
+                            <input type="checkbox" value="{{ comment.isPublished }}" checked disabled>
+                        {% else %}
+                            <input type="checkbox" value="{{ comment.isPublished }}" disabled>
+                        {% endif %}
+                    </td>
+                    <th scope="col"><a href="{{ path('delComment', {id:comment.id}) }}"><i class="bi bi-trash"></i></a></th>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
