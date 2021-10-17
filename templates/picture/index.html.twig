@@ -2,7 +2,7 @@
 
 {% block body %}
 <div class="container">
-    <h2>Pictures</h2>
+    <h2 class="mt-5">Pictures <a href="{{ path('addPicture') }}"><i class="bi bi-plus-square"></i></a></h2>
 
     <table class="table table-hover">
         <thead>
@@ -14,15 +14,28 @@
                         <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Category</a>
                             <ul class="dropdown-menu">
+                                <a href="{{ path('admin') }}" class="dropdown-item">All Categories</a>
                                 {% for cat in categories %}
-                                    <li class="dropdown-item">{{ cat.name }}</li>
+                                    <a href="{{ path('cat', {id:cat.id}) }}" class="dropdown-item">{{ cat.name }}</a>
                                 {% endfor %}
                             </ul>
                         </li>
                     </ul>
                 </th>
                 <th scope="col">Size</th>
-                <th scope="col">Artist</th>
+                <th scope="col">
+                    <ul class="nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Artist</a>
+                            <ul class="dropdown-menu">
+                                <a href="{{ path('admin') }}" class="dropdown-item">All Artists</a>
+                                {% for art in artists %}
+                                    <a href="{{ path('art', {id:art.id}) }}" class="dropdown-item" href="#">{{ art.firstname ~' ' ~ art.lastname }}</a>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    </ul>
+                </th>
                 <th scope="col">Date</th>
                 <th scope="col">Published</th>
                 <th scope="col"><i class="bi bi-pencil"></i></th>
@@ -46,8 +59,8 @@
                         <input type="checkbox" value="{{ pic.isPulished }}" disabled>
                     {% endif %}
                 </td>
-                <th scope="col"><a href="#"><i class="bi bi-pencil"></i></a></th>
-                <th scope="col"><a href="#"><i class="bi bi-trash"></i></a></th>
+                <th scope="col"><a href="{{ path('editPicture', {id:pic.id}) }}"><i class="bi bi-pencil"></i></a></th>
+                <th scope="col"><a href="{{ path('delPicture', {id:pic.id}) }}"><i class="bi bi-trash"></i></a></th>
             </tr>
             {% endfor %}
         </tbody>
