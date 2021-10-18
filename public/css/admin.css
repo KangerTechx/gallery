@@ -17,3 +17,35 @@
     background-color: #970202;
     color: #fff;
 }
+
+.yellow {
+    color: #e2e20f;
+}
+
+/* -- table custom -- */
+
+#adminTable th::before
+{
+    left: 2px;
+    margin-bottom: -5px;
+}
+
+#adminTable th::after
+{
+    left: 8px;
+    margin-bottom: -5px;
+}
+
+#adminTable th {
+    padding-left: 20px;
+}
+
+#adminTable_paginate ul {
+    margin: 30px 550px 0 0;
+}
+
+.no-sort::before,
+.no-sort::after
+{
+    display: none !important;
+}

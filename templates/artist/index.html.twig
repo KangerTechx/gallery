@@ -4,15 +4,15 @@
     <div class="container">
         <h2 class="mt-5">Artist <a href="{{ path('addArtist') }}"><i class="bi bi-plus-square"></i></a></h2>
 
-        <table class="table table-hover">
+        <table class="table table-hover" id="adminTable">
             <thead>
             <tr>
-                <th scope="col">Avatar</th>
+                <th scope="col" class="no-sort">Avatar</th>
                 <th scope="col">Name</th>
                 <th scope="col">Date of Birth</th>
-                <th scope="col">Bibliography</th>
-                <th scope="col">Is Banned</th>
-                <th scope="col"><i class="bi bi-pencil"></i></th>
+                <th scope="col" class="no-sort">Bibliography</th>
+                <th scope="col" class="no-sort">Is Banned</th>
+                <th scope="col" class="no-sort"><i class="bi bi-pencil"></i></th>
             </tr>
             </thead>
             <tbody>

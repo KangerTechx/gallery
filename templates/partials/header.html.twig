@@ -1,56 +1,46 @@
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="{{ path('home') }}"><img src="{{ asset('img/paint.svg') }}" class="paint">Modern-Arts</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse flex-nav" id="navbarSupportedContent">
+            {% if not app.user %}
+                <ul class="navbar-nav">
+                    <li class="nav-item users-logo me-2">
+                        <a href="{{ path('login') }}" class="nav-link"><i class="bi bi-person-circle icon-custom"></i></a>
+                    </li>
+                </ul>
+            {% else %}
+                <ul class="navbar-nav" >
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="?page=Film" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="{{ asset('img/users/'~ app.user.image) }}" class="user-profil">
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li class="user-icon"><i class="bi bi-person-circle mx-2"></i><span class="user-name">{{ app.user.firstname|capitalize~' '~app.user.lastname|capitalize }}</span></li>
+                            <hr>
+                            {% if is_granted('ROLE_ADMIN')  %}
+                            <li class="user-icon"><a class="dropdown-item" href="{{ path('admin') }}"><i class="bi bi-door-open me-2"></i>Administration</a></li>
+                            {% endif %}
+                            <li class="user-icon"><a class="dropdown-item" href="?page=user"><i class="bi bi-gear me-2"></i>Paramètres</a></li>
+                            <li class="user-icon"><a class="dropdown-item" href="{{ path('logout') }}"><i class="bi bi-power me-2"></i>Déconnexion</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            {% endif %}
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link nav-linkCustom" href="{{ path('about') }}">About</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link nav-linkCustom" href="{{ path('gallery') }}">Gallery</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled">Disabled</a>
+                    <a class="nav-link nav-linkCustom" href="#">Contact</a>
                 </li>
             </ul>
-            {% if not app.user %}
-            <ul class="navbar-nav">
-                <li class="nav-item users-logo me-2">
-                    <a href="{{ path('login') }}" class="nav-link"><i class="bi bi-person-circle"></i></a>
-                </li>
-            </ul>
-            {% else %}
-            <ul class="navbar-nav " >
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="?page=Film" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="#" class="user-profil">
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li class="user-icon"><i class="bi bi-person-circle mx-2"></i><span class="user-name">name</span></li>
-                        <hr>
-
-                        <li class="user-icon"><a class="dropdown-item" href="{{ path('admin') }}"><i class="bi bi-door-open me-2"></i>Administration</a></li>
-
-                        <li class="user-icon"><a class="dropdown-item" href="?page=user"><i class="bi bi-gear me-2"></i>Paramètres</a></li>
-                        <li class="user-icon"><a class="dropdown-item" href="{{ path('logout') }}"><i class="bi bi-power me-2"></i>Déconnexion</a></li>
-                    </ul>
-                </li>
-            </ul>
-            {% endif %}
         </div>
     </div>
 </nav>

@@ -41,7 +41,6 @@ class PictureController extends AbstractController
             'pictures' => $pictures,
             'categories' => $category,
             'artists' => $artist
-
         ]);
     }
 

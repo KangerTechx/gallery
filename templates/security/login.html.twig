@@ -1,7 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <section>
+    {{ parent() }}
+    <section class="mb-5">
 
         <div class="form container col-12 col-lg-5 mt-5">
             <div class="row">
@@ -16,10 +17,6 @@
                     </label>
                 </div>
                 <div class="form-group formCustom mb-3">
-                    <div class="eyes">
-                        <i class="bi bi-eye-fill" id="seeText" onclick="seeMdp()"></i>
-                        <i class="bi bi-eye-slash-fill lost" id="seePass" onclick="seeMdp()"></i>
-                    </div>
                     <input type="password" class="form-control" required name="_password">
                     <label for="password" class="label">
                         <span class="labelContent">Password</span>
@@ -31,4 +28,7 @@
         </div>
         </div>
     </section>
+    <section class="mb-4">.</section>
+
+
 {% endblock %}

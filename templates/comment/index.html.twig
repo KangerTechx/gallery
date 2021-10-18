@@ -4,16 +4,18 @@
     <div class="container">
         <h2 class="mt-5">Comments</h2>
 
-        <table class="table table-hover">
+        <table class="table table-hover" id="adminTable">
             <thead>
             <tr>
-                <th scope="col">Picture</th>
+                <th scope="col" class="no-sort">Picture</th>
                 <th scope="col">Title</th>
                 <th scope="col">Created At</th>
+                <th scope="col">Pseudo</th>
+                <th scope="col">Name</th>
                 <th scope="col">Stars</th>
-                <th scope="col">Comment</th>
-                <th scope="col">Published</th>
-                <th scope="col"><i class="bi bi-trash"></i></th>
+                <th scope="col" class="no-sort">Comment</th>
+                <th scope="col" class="no-sort">Published</th>
+                <th scope="col" class="no-sort"><i class="bi bi-trash"></i></th>
             </tr>
             </thead>
             <tbody>
@@ -23,7 +25,17 @@
                     <th scope="row"><img src="{{ asset('img/pictures/' ~ comment.picture.image) }}" class="img-table" alt="{{ comment.picture.title }}"></th>
                     <td>{{ comment.title }}</td>
                     <td>{{ comment.createdAt|date('d-m-Y') }}</td>
-                    <td>{{ comment.star }}</td>
+                    <td>{{ comment.pseudo.pseudo }}</td>
+                    <td>{{ comment.pseudo.lastname }}</td>
+                    <td>
+                        {% for i in 1..5 %}
+                            {% if i <= comment.star %}
+                                <i class="bi bi-star-fill yellow"></i>
+                            {% else %}
+                                <i class="bi bi-star"></i>
+                            {% endif %}
+                        {% endfor %}
+                    </td>
                     <td>{{ comment.descript }}</td>
                     <td>
                         {% if comment.isPublished == true %}

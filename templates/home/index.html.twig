@@ -4,5 +4,89 @@
 
 {% block body %}
     {{ parent() }}
-    <h1>Welcome to page home</h1>
+    <section class="container col-md-7 offset-md-3">
+        <div class="branding-title">
+            <h1 class="mt-5 display-4">Welcome to Modern Arts</h1>
+            <p class="mt-5 mb-3 col-md-7">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam blanditiis error et exercitationem
+                expedita fugiat labore, magni, nisi nostrum nulla officiis qui quo sapiente, ullam veritatis voluptates?
+                Eum, nulla!</p>
+            <div class="mt-5">
+                <a href="{{ path('about') }}" class="btn btn-outline-dark me-4">Learn More</a>
+                <a href="{{ path('gallery') }}" class="btn btn-outline-dark">Visit Gallery</a>
+            </div>
+        </div>
+    </section>
+    <section class="proverb">
+        <hr class="line">
+        <div class=" col-md-4 offset-md-4 mt-5">
+            <h2 class="text-center display-4 titleCustom">Lorem ipsum dolor</h2>
+            <p class="text-center prov-para">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis excepturi magni molestias quibusdam ratione! Accusantium aliquid aperiam asperiores at beatae blanditiis culpa cupiditate fugiat hic in incidunt laboriosam magnam modi mollitia necessitatibus, porro quasi quisquam quo repudiandae rerum unde vitae.</p>
+        </div>
+        <hr class="line">
+    </section>
+
+    <!-- section last artist -->
+    <section class="lastArtist">
+        <div class="container">
+            <h2 class="text-center display-4 titleCustom">Our Last Artist</h2>
+            <div class="d-flex justify-content-lg-around">
+                {% for art in artistes %}
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ asset('img/artists/'~ art.image) }}" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ art.lastname|capitalize ~ ' ' ~ art.firstname|capitalize }}</h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">{{ art.dnais|date('d-m-Y') }}</li>
+                            <li class="list-group-item d-flex justify-content-around">
+                                <a href="https://fr-fr.facebook.com/" target="_blank"><i class="bi bi-facebook"></i></a>
+                                <a href="https://fr.linkedin.com/" target="_blank"><i class="bi bi-linkedin"></i></a>
+                                <a href="https://www.instagram.com/?hl=fr" target="_blank"><i class="bi bi-instagram"></i></a>
+                            </li>
+                        </ul>
+                        <div class="card-body d-flex justify-content-around">
+                            <a href="{{ path('artDetail',{'id':art.id}) }}" class="card-link text-decoration-none">Learn More</a>
+                            <a href="#" class="card-link text-decoration-none">See paints</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!-- section text -->
+    <section class="proverb">
+        <hr class="line">
+        <div class=" col-md-4 offset-md-4 mt-5">
+            <h2 class="text-center display-4 titleCustom">Lorem ipsum dolor</h2>
+            <p class="text-center prov-para">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis excepturi magni molestias quibusdam ratione! Accusantium aliquid aperiam asperiores at beatae blanditiis culpa cupiditate fugiat hic in incidunt laboriosam magnam modi mollitia necessitatibus, porro quasi quisquam quo repudiandae rerum unde vitae.</p>
+        </div>
+        <hr class="line">
+    </section>
+
+    <!-- section last pictures -->
+    <section class="lastArtist">
+        <div class="container">
+            <h2 class="text-center display-4 titleCustom">Our Last Paints</h2>
+            <div class="d-flex justify-content-lg-around">
+                {% for pic in pictures %}
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ asset('img/pictures/'~ pic.image) }}" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ pic.title }}</h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Created At : {{ pic.createdAt|date('d-m-Y') }}</li>
+                            <li class="list-group-item">
+                                Artist: {{ pic.artist.lastname|capitalize ~' '~ pic.artist.firstname|capitalize }}
+                            </li>
+                        </ul>
+                        <div class="card-body">
+                            <a href="{{ path( 'picDetail', {'id':pic.id}) }}" class="card-link text-decoration-none">Details</a>
+                            <a href="{{ path( 'artDetail', {'id':pic.artist.id}) }}" class="card-link text-decoration-none">Artist</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
 {% endblock %}

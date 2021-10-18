@@ -1,0 +1,115 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <section>
+        <div class="container">
+            <h2 class="text-center display-4 titleCustom">About Us</h2>
+        </div>
+    </section>
+    <section class="bg-light carou">
+        <hr class="line">
+        <div class="container">
+            <h2 class="text-center display-4 titleCustom">Our Gallery</h2>
+            <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active" data-bs-interval="10000">
+                        <img src="{{ asset('img/museum/1.jpg') }}" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item" data-bs-interval="2000">
+                        <img src="{{ asset('img/museum/2.jpg') }}" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{ asset('img/museum/3.jpg') }}" class="d-block w-100" alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section class="carou">
+        <hr class="line">
+        <div class="container">
+            <h2 class="text-center display-4 titleCustom">Our Team</h2>
+            <div class="team-container">
+                {% for user in users %}
+                    <div class="team-card">
+                        <div class="bg-image">
+                            <img src="{{ asset('img/bg-team.jpg') }}" alt="plante">
+                        </div>
+                        <div class="pic mt-3">
+                            <img src="{{ asset('img/users/'~ user.image) }}" alt="{{ user.pseudo }}">
+                        </div>
+                        <div class="info-team mt-4">
+                            <h4>{{ user.firstname|capitalize ~' '~user.lastname|capitalize }}</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A animi aspernatur atque corporis dolorum eum inventore necessitatibus officiis omnis voluptatem!</p>
+                            <div class="team-icons">
+                                <a href="https://www.facebook.com/" target="_blank"><i class="bi bi-facebook"></i></a>
+                                <a href="https://www.instagram.com/" target="_blank"><i class="bi bi-instagram"></i></a>
+                                <a href="https://linkedin.com" target="_blank"><i class="bi bi-linkedin"></i></a>
+                                <a href="https://twitter.com/" target="_blank"><i class="bi bi-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section class="proverb">
+        <hr class="line">
+        <div class=" col-md-4 offset-md-4 mt-5">
+            <h2 class="text-center display-4 titleCustom">Lorem ipsum dolor</h2>
+            <p class="text-center prov-para">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis excepturi magni molestias quibusdam ratione! Accusantium aliquid aperiam asperiores at beatae blanditiis culpa cupiditate fugiat hic in incidunt laboriosam magnam modi mollitia necessitatibus, porro quasi quisquam quo repudiandae rerum unde vitae.</p>
+        </div>
+        <hr class="line">
+    </section>
+
+    <!-- Artist -->
+    <section class="carou">
+        <div class="container">
+            <h2 class="text-center display-4 titleCustom">Our Artists</h2>
+            <div class="team-container">
+                {% for art in artists %}
+                <div class="team-card">
+                    <div class="bg-image">
+                        <img src="{{ asset('img/bg-team.jpg') }}" alt="plante">
+                    </div>
+                    <div class="pic mt-3">
+                        <img src="{{ asset('img/artists/'~ art.image) }}" alt="{{ art.lastname }}">
+                    </div>
+                    <div class="info-team mt-4">
+                        <h4>{{ art.firstname~' '~art.lastname }}</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A animi aspernatur atque corporis dolorum eum inventore necessitatibus officiis omnis voluptatem!</p>
+                        <div class="team-icons">
+                            <a href="https://www.facebook.com/" target="_blank"><i class="bi bi-facebook"></i></a>
+                            <a href="https://www.instagram.com/" target="_blank"><i class="bi bi-instagram"></i></a>
+                            <a href="https://linkedin.com" target="_blank"><i class="bi bi-linkedin"></i></a>
+                            <a href="https://twitter.com/" target="_blank"><i class="bi bi-twitter"></i></a>
+                        </div>
+                        <hr>
+                        <div>
+                            <a href="{{ path('artDetail', {'id':art.id}) }}" class="card-link text-decoration-none">Details</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

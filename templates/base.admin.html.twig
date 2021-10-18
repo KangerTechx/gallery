@@ -9,17 +9,32 @@
         <link rel="stylesheet" href="{{ asset('css/minireset.css') }}">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="//cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
         <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     {% endblock %}
 
 
 </head>
+
 <body>
 {% include 'partials/header-admin.html.twig' %}
-{% block body %}{% endblock %}
 {% block javascripts %}
 
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#adminTable').DataTable( {
+                "info" : false,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
+                }
+            } );
+        } );
+    </script>
 {% endblock %}
+{% block body %}{% endblock %}
 </body>
 </html>

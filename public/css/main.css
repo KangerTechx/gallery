@@ -1,3 +1,108 @@
+/* -- NAV CUSTOM -- */
+nav {
+    position: sticky !important;
+    top: 25px;
+}
+.paint {
+    width: 40px;
+    filter: invert(30%);
+}
+
+.icon-custom {
+    font-size: 1.4rem;
+}
+
+.user-profil {
+    width: 30px;
+    height: auto;
+    border-radius: 50%;
+}
+
+.user-profil:hover {
+    border: 2px solid #000;
+}
+
+/* -- FOOTER CUSTOM -- */
+
+footer {
+    background-color: rgba(252, 252, 252, 0.95);
+    padding-top: 30px;
+}
+
+
+footer a {
+    color: rgb(92, 92, 94);
+    text-decoration: none;
+}
+
+.footer-link {
+    color: rgb(92, 92, 94);
+    font-size: 1.5rem;
+    margin: 15px;
+}
+
+footer span {
+    font-size: 1.5rem;
+    margin-left: 15px;
+}
+
+/* -- HOME PAGE CUSTOM -- */
+
+.branding-title {
+    margin-top: 200px;
+    margin-bottom: 300px;
+}
+
+.proverb {
+    background-color: rgba(252, 252, 252, 0.95);
+}
+
+.titleCustom {
+    margin-top: 150px;
+    margin-bottom: 75px;
+}
+
+.prov-para {
+    font-size: 1.1rem;
+    font-style: italic;
+    margin-bottom: 100px;
+}
+.prov-para::before {
+    content: open-quote;
+    font-size: 1.5rem;
+}
+.prov-para::after {
+    content: close-quote;
+    font-size: 1.5rem;
+}
+
+.lastArtist {
+    margin-bottom: 100px;
+}
+
+section a  {
+    color: rgb(92, 92, 94);
+}
+
+@media screen and (min-width: 992px) {
+    .flex-nav {
+        position: absolute;
+        right: 100px;
+    }
+    .nav-linkCustom {
+        font-size: 1.2rem;
+        margin-left: 20px;
+    }
+    .line {
+        width: 100px;
+        height: 8px;
+        color: #034a87;
+        transform: rotate(90deg);
+        margin-left: 46vw;
+    }
+}
+
+
 /* -- VIDEO CUSTOM -- */
 
 .video {
@@ -7,6 +112,100 @@
     top: 0;
     z-index: -1;
     opacity: 20%;
+}
+
+
+/* -- CUSTOM ABOUT -- */
+
+/* -- cards -- */
+
+.team-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.team-card {
+    height: 500px;
+    width: 290px;
+    margin: 20px;
+    box-shadow: 0 3px 5px #C3C3C3FF;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+
+.bg-img img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    filter: grayscale(1);
+}
+
+.pic img {
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    border: 5px solid #eaeaea;
+    margin-top: -90px;
+    position: relative;
+}
+
+.info-team h3 {
+    font-size: 1.5rem;
+    padding: 10px 0;
+    color: #181818FF;
+}
+
+.info-team p {
+    font-size: 0.8rem;
+    padding: 10px 30px;
+    color: #181818FF;
+}
+
+.info-team .team-icons {
+    margin-top: 15px;
+}
+
+.team-icons a {
+    font-size: 1.5rem;
+    text-decoration: none;
+    padding: 0 5px;
+    color: #C3C3C3FF;
+}
+.team-icons a:hover {
+    color: #529AFD;
+}
+
+/* -- Custom carousel -- */
+.carou {
+    padding-bottom: 150px;
+}
+
+/* -- CUSTOM Gallery -- */
+
+.card-gallery {
+    height: 300px;
+    width: auto;
+}
+
+/* -- CUSTOM Artist Detail -- */
+
+.img-artist {
+    width: 400px;
+    height: auto;
+}
+
+.iconArt {
+    width: 20px;
+}
+
+/* -- CUSTOM Picture Detail -- */
+
+.yellow {
+    color: #e2e20f;
 }
 
 /* -- CUSTOM LOGIN FORM -- */

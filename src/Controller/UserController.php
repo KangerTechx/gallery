@@ -28,6 +28,12 @@ class UserController extends AbstractController
     }
 
 
+    /**
+     * @param User $user
+     * @param EntityManagerInterface $manager
+     * @param Request $request
+     * @return Response
+     */
     #[Route('/editUserAdmin/{id}', name: 'editUserAdmin')]
     public function editUser(User $user, EntityManagerInterface $manager, Request $request) : Response
     {
@@ -36,6 +42,16 @@ class UserController extends AbstractController
 
         if($form->isSubmitted()&& $form->isValid()) {
             $manager->persist($user);
+            $manager->flush();
+
+            if ($user->getIsDisabled() == true) {
+                $comments = $user->getComments();
+
+                foreach ($comments as $comment ) {
+                    $comment->setIsPublished(false);
+                    $manager->persist($comment);
+                }
+            }
             $manager->flush();
             return $this->redirectToRoute('user');
         }

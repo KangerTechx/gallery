@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+    <section class="lastArtist">
+        <div class="container">
+            <h2 class="text-center display-4 titleCustom">Our Gallery</h2>
+            <div class="d-flex justify-content-lg-around d-flex flex-wrap">
+                {% for pic in pictures %}
+                    <div class="card mb-5" style="width: 22rem;">
+                        <img src="{{ asset('img/pictures/'~ pic.image) }}" class="card-img-top card-gallery" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ pic.title }}</h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Created At : {{ pic.createdAt|date('d-m-Y') }}</li>
+                            <li class="list-group-item">
+                                Artist: {{ pic.artist.lastname ~' '~ pic.artist.firstname }}
+                            </li>
+                        </ul>
+                        <div class="card-body">
+                            <a href="{{ path('picDetail', {'id':pic.id}) }}" class="card-link text-decoration-none">Details</a>
+                            <a href="{{ path('artDetail', {'id':pic.artist.id}) }}" class="card-link text-decoration-none">Artist</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
