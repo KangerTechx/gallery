@@ -115,17 +115,17 @@ class HomeController extends AbstractController
      * @return Response
      */
     #[Route('/picDetail/{id}', name: 'picDetail')]
-    public function pictureDetails(Picture $picture, CommentRepository $commentRepository) : Response
+    public function pictureDetails(PictureRepository $pictureRepository, CommentRepository $commentRepository, int $id) : Response
     {
 
-        $comments = $commentRepository->findBy(
-            ['isPublished' => true],
-            ['id' => 'DESC']
-        );
+        $paint = $pictureRepository->find($id);
+        $comment = $commentRepository->findBy([
+            'picture' => $id
+        ]);
 
         return $this->render('home/picDetail.html.twig', [
-            'picture' => $picture,
-            'comments' =>$comments
+            'picture' => $paint,
+            'comments' =>$comment
             ]);
     }
 

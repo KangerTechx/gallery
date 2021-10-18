@@ -20,7 +20,11 @@
                             <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Infos</button>
                             <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Description</button>
                             <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#comment" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Comments</button>
-                            <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#addcomment" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Add Comment</button>
+                            {% if not app.user %}
+                            <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#addcomment" type="button" role="tab" aria-controls="nav-profile" aria-selected="false" disabled>Add Comment</button>
+                            {% else %}
+                                <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#addcomment" type="button" role="tab" aria-controls="nav-profile" aria-selected="false" >Add Comment</button>
+                            {% endif %}
                         </div>
                     </nav>
                     <div class="tab-content" id="nav-tabContent">

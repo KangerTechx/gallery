@@ -23,7 +23,6 @@
                             {% if is_granted('ROLE_ADMIN')  %}
                             <li class="user-icon"><a class="dropdown-item" href="{{ path('admin') }}"><i class="bi bi-door-open me-2"></i>Administration</a></li>
                             {% endif %}
-                            <li class="user-icon"><a class="dropdown-item" href="?page=user"><i class="bi bi-gear me-2"></i>Paramètres</a></li>
                             <li class="user-icon"><a class="dropdown-item" href="{{ path('logout') }}"><i class="bi bi-power me-2"></i>Déconnexion</a></li>
                         </ul>
                     </li>
