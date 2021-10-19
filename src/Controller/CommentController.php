@@ -45,7 +45,6 @@ class CommentController extends AbstractController
     }
 
 
-    #[Route('/addComment/{id}', name: 'addComment')]
 
     /**
      * @param Request $request
@@ -55,6 +54,7 @@ class CommentController extends AbstractController
      * @return Response
      * @throws \Exception
      */
+    #[Route('/addComment/{id}', name: 'addComment')]
     public function addComment(Request $request, EntityManagerInterface $manager, int $id, PictureRepository $pictureRepository) : Response
     {
         $paint = $pictureRepository->find($id);
