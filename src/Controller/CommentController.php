@@ -46,24 +46,33 @@ class CommentController extends AbstractController
 
 
     #[Route('/addComment/{id}', name: 'addComment')]
+
+    /**
+     * @param Request $request
+     * @param EntityManagerInterface $manager
+     * @param int $id
+     * @param PictureRepository $pictureRepository
+     * @return Response
+     * @throws \Exception
+     */
     public function addComment(Request $request, EntityManagerInterface $manager, int $id, PictureRepository $pictureRepository) : Response
     {
         $paint = $pictureRepository->find($id);
+        $user = $this->getUser();
         $comment = new Comment();
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
-            $pseu = $request->request->get('_pseudo');
-            $pseudo =  (int)$pseu;
-            dd($pseudo);
             $comment->setCreatedAt(new \DateTimeImmutable())
                     ->setIsPublished(true)
                     ->setPicture($paint)
-                    ->setPseudo($pseudo);
+                    ->setPseudo($user);
             $manager->persist($comment);
             $manager->flush();
-            return $this->redirectToRoute('picDetail');
+            return $this->redirectToRoute('picDetail', [
+                'id' => $id
+            ]);
         }
         return $this->render('home/addComment.html.twig', [
             'form' => $form->createView(),

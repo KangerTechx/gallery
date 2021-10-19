@@ -23,7 +23,8 @@
                             {% if not app.user %}
                             <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#addcomment" type="button" role="tab" aria-controls="nav-profile" aria-selected="false" disabled>Add Comment</button>
                             {% else %}
-                                <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#addcomment" type="button" role="tab" aria-controls="nav-profile" aria-selected="false" >Add Comment</button>
+                                <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#addcomment" type="button" role="tab" aria-controls="nav-profile" aria-selected="false" >
+                                    <a href="{{ path('addComment', {id:picture.id}) }}">Add Comment</a></button>
                             {% endif %}
                         </div>
                     </nav>
@@ -58,12 +59,6 @@
                                     <hr>
                                 </div>
                             {% endfor %}
-                        </div>
-                        <div class="tab-pane fade ms-3" id="addcomment" role="tabpanel" aria-labelledby="nav-profile-tab">
-                            <div class="mt-2">
-                                <h5>Add a comment</h5>
-                                <p> En cours de maintenance</p>
-                            </div>
                         </div>
                     </div>
                 </div>
