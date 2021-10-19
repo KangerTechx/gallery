@@ -74,6 +74,7 @@ class ArtistController extends AbstractController
         ]);
     }
 
+
     /**
      * @param Artist $artist
      * @param EntityManagerInterface $manager
@@ -87,6 +88,23 @@ class ArtistController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted()&& $form->isValid()) {
             $manager->persist($artist);
+            $manager->flush();
+
+            if ($artist->getIsDisabled() == true) {
+                $pictures = $artist->getPictures();
+
+                foreach ($pictures as $picture ) {
+                    $picture->setIsPulished(false);
+                    $manager->persist($picture);
+                }
+            } else {
+                $pictures = $artist->getPictures();
+
+                foreach ($pictures as $picture ) {
+                    $picture->setIsPulished(true);
+                    $manager->persist($picture);
+                }
+            }
             $manager->flush();
             return $this->redirectToRoute('artist');
         }

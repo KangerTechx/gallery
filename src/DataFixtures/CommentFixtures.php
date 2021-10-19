@@ -22,13 +22,13 @@ class CommentFixtures extends Fixture implements DependentFixtureInterface
         $nbrPicture = count($picture);
         $nbrUser = count($user);
 
-        for($i = 1; $i<= 30; $i++) {
+        for($i = 1; $i<= 100; $i++) {
             $comment = new Comment();
             $comment->setPicture($picture[$faker->numberBetween(0, $nbrPicture -1)])
                 ->setPseudo($user[$faker->numberBetween(0,$nbrUser -1)])
                 ->setCreatedAt(new \DateTimeImmutable())
                 ->setStar($faker->numberBetween(0, 5))
-                ->setDescript($faker->paragraph(2, true))
+                ->setDescript($faker->paragraph(4, true))
                 ->setTitle($faker->sentence(2, true))
                 ->setIsPublished(true);
             $manager->persist($comment);

@@ -51,6 +51,13 @@ class UserController extends AbstractController
                     $comment->setIsPublished(false);
                     $manager->persist($comment);
                 }
+            } else {
+                $comments = $user->getComments();
+
+                foreach ($comments as $comment ) {
+                    $comment->setIsPublished(true);
+                    $manager->persist($comment);
+                }
             }
             $manager->flush();
             return $this->redirectToRoute('user');

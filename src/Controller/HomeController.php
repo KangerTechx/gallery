@@ -111,7 +111,9 @@ class HomeController extends AbstractController
 
 
     /**
-     * @param Picture $picture
+     * @param PictureRepository $pictureRepository
+     * @param CommentRepository $commentRepository
+     * @param int $id
      * @return Response
      */
     #[Route('/picDetail/{id}', name: 'picDetail')]
@@ -127,6 +129,16 @@ class HomeController extends AbstractController
             'picture' => $paint,
             'comments' =>$comment
             ]);
+    }
+
+
+    /**
+     * @return Response
+     */
+    #[Route('/contact', name: 'contact')]
+    public function contact() : Response
+    {
+        return $this->render('home/contact.html.twig');
     }
 
 

@@ -22,7 +22,7 @@ class ArtistFixtures extends Fixture
             $artist->setFirstname($faker->firstName($gender))
                 ->setLastname($faker->lastName)
                 ->setDnais(new \DateTimeImmutable())
-                ->setBiblio($faker->sentence);
+                ->setBiblio($faker->paragraph(5, true));
             $gender = $gender == 'male' ? 'm' : 'f';
             $artist->setImage($i . $gender . '.jpg');
             $artist->setIsDisabled(false);

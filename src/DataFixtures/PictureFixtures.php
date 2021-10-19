@@ -38,8 +38,8 @@ class PictureFixtures extends Fixture implements DependentFixtureInterface
                 ->setHeight($this->height[$faker->numberBetween(0, $nbrHeigth -1)])
                 ->setCreatedAt(new \DateTimeImmutable())
                 ->setImage($i.'.jpg')
-                ->setSmalldescript($faker->paragraph(1, true))
-                ->setFulldescript($faker->paragraph(4, true))
+                ->setSmalldescript($faker->paragraph(4, true))
+                ->setFulldescript($faker->paragraph(8, true))
                 ->setSlug($slugify->slugify($picture->getTitle()))
                 ->setIsPulished($faker->boolean(90));
             $manager->persist($picture);

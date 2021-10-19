@@ -26,7 +26,7 @@
                     <td>{{ comment.title }}</td>
                     <td>{{ comment.createdAt|date('d-m-Y') }}</td>
                     <td>{{ comment.pseudo.pseudo }}</td>
-                    <td>{{ comment.pseudo.lastname }}</td>
+                    <td>{{ comment.pseudo.lastname|capitalize ~' '~ comment.pseudo.firstname|capitalize }}</td>
                     <td>
                         {% for i in 1..5 %}
                             {% if i <= comment.star %}

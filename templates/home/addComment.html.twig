@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add comment{% endblock %}
+{% block body %}
+    <main class="container">
+        <section class="row">
+            <div class="col-md-8 offset-md-2">
+                <h2 class="mt-5">Add a comment</h2>
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <input type="number" value="{{ picture.id }}" id="picture" hidden>
+                <input type="number" value="{{ app.user.id }}" id="pseudo" hidden name="_pseudo">
+                <input type="submit" value="Add Comment" class="btn btn-outline-primary">
+                {{ form_end(form) }}
+            </div>
+        </section>
+    </main>
+{% endblock %}

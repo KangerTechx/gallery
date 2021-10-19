@@ -9,9 +9,10 @@ use Doctrine\Persistence\ObjectManager;
 class CategoryFixtures extends Fixture
 {
     private $categories = [
-        ' Peinture Acrylique',
-        'Peinture Spray',
-        'Peinture Glycéro'
+        'Acrylique',
+        'Spray',
+        'Glycéro',
+        'Gouache'
     ];
     public function load(ObjectManager $manager)
     {
