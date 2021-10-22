@@ -19,12 +19,12 @@
                         <div class="nav nav-tabs " id="nav-tab" role="tablist">
                             <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Infos</button>
                             <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Description</button>
-                            <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#comment" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Comments</button>
+                            <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#comment" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Reviews</button>
                             {% if not app.user %}
-                            <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#addcomment" type="button" role="tab" aria-controls="nav-profile" aria-selected="false" disabled>Add Comment</button>
+                            <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#addcomment" type="button" role="tab" aria-controls="nav-profile" aria-selected="false" disabled>Add Review</button>
                             {% else %}
                                 <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#addcomment" type="button" role="tab" aria-controls="nav-profile" aria-selected="false" >
-                                    <a href="{{ path('addComment', {id:picture.id}) }}">Add Comment</a></button>
+                                    <a href="{{ path('addComment', {id:picture.id}) }}">Add Review</a></button>
                             {% endif %}
                         </div>
                     </nav>
